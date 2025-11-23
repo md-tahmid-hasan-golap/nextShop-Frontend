@@ -1,7 +1,12 @@
 "use client";
 
 import Marquee from "react-fast-marquee";
-import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaLinkedinIn,
+  FaWhatsappSquare,
+} from "react-icons/fa";
 
 export default function ContactPage() {
   return (
@@ -33,6 +38,10 @@ export default function ContactPage() {
           className="text-gray-800 hover:text-gray-900 transition-colors duration-300 rounded-full p-2 hover:bg-gray-200"
         >
           <FaGithub size={36} />
+        </a>
+
+        <a href="" className="text-green-500">
+          <FaWhatsappSquare size={36} />
         </a>
       </div>
       <div className="bg-amber-50 p-4 rounded-lg max-w-5xl mx-auto">
