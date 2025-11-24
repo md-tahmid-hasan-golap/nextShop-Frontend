@@ -1,16 +1,34 @@
 "use client";
 
+import { AuthContext } from "@/components/AuthContext";
 import axios from "axios";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export default function ProductsPage() {
+  const { user } = useContext(AuthContext); 
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // ✅ Check if user is logged in
+    if (!user) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please login first!",
+        icon: "error",
+        confirmButtonColor: "#ef4444",
+      });
+      return;
+    }
 
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     data.date = new Date();
+    data.email = user.email;
 
     axios
       .post("http://localhost:5000/products", data)
@@ -19,10 +37,11 @@ export default function ProductsPage() {
           title: "Success!",
           text: "Product Added Successfully!",
           icon: "success",
-          confirmButtonColor: "#f59e0b", // amber
+          confirmButtonColor: "#f59e0b",
         });
 
         form.reset(); // form reset
+        router.push("/myProducts"); // ✅ redirect after success
       })
       .catch((error) => {
         Swal.fire({
@@ -43,7 +62,6 @@ export default function ProductsPage() {
       </h1>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
         {/* Title */}
         <div className="col-span-1 md:col-span-2">
           <label className="block mb-1 font-medium">Title</label>
@@ -148,7 +166,6 @@ export default function ProductsPage() {
             Add Product
           </button>
         </div>
-
       </form>
     </div>
   );

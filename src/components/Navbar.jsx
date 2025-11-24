@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const { user, logOut } = useContext(AuthContext);
 
-  // LINKS without Add Product
+  // Base links (সব ইউজারের জন্য)
   const baseLinks = [
     { name: "Home", href: "/" },
     { name: "All Products", href: "/products" },
@@ -21,14 +21,21 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Add Product and My Imports only if user exists
-  const links = user
+  // Private links (লগইন থাকা ইউজারের জন্য)
+  const privateLinks = user
     ? [
-        ...baseLinks,
+        { name: "My Products", href: "/myProducts" }, // All Products এর পরে
         { name: "Add Product", href: "/addProduct" },
-        { name: "My Imports", href: "/myImports" }, // Private route
+        { name: "My Imports", href: "/myImports" },
       ]
-    : baseLinks;
+    : [];
+
+  // Final links
+  const links = [
+    ...baseLinks.slice(0, 2), // Home + All Products
+    ...privateLinks, // My Products, Add Product, My Imports
+    ...baseLinks.slice(2), // About + Contact
+  ];
 
   const handleLogout = () => {
     logOut()
@@ -80,7 +87,6 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <>
-              {/* User Photo with fallback */}
               <div className="relative group flex flex-col items-center">
                 <img
                   src={

@@ -110,12 +110,7 @@ export default function MyImports() {
                   >
                     <FaInfoCircle /> Details
                   </Link>
-                  <Link
-                    href={`/updateProduct/${item.productId}`}
-                    className="flex items-center gap-1 px-3 py-1 bg-amber-600 text-white rounded hover:bg-amber-700"
-                  >
-                    <FaEdit /> Update
-                  </Link>
+
                   <button
                     onClick={() => handleDelete(item._id)}
                     className="flex items-center gap-1 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"

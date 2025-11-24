@@ -1,15 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { FaInfoCircle } from "react-icons/fa";
+import { FaInfoCircle, FaEdit, FaTrash } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "@/components/AuthContext"; // adjust path
+import Swal from "sweetalert2";
+import axios from "axios";
 
-export default function LatestProductCards({ product }) {
+export default function LatestProductCards({
+  product,
+  showButtons = false,
+  onDelete,
+}) {
   const { _id, category, imageUrl, price, priority, shortDescription, title } =
     product;
+  const { user } = useContext(AuthContext);
 
-  const { user } = useContext(AuthContext); // logged in user
+  const handleDelete = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:5000/deleteImportProduct/${_id}`);
+        Swal.fire("Deleted!", "Product has been deleted.", "success");
+
+        // ✅ Call parent callback to remove from UI
+        if (onDelete) onDelete(_id);
+      } catch (err) {
+        console.error(err);
+        Swal.fire("Error!", "Failed to delete product.", "error");
+      }
+    }
+  };
 
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-transform transform hover:scale-105 p-4 flex flex-col items-center text-center relative">
@@ -35,15 +65,35 @@ export default function LatestProductCards({ product }) {
         </span>
       </div>
 
-      {/* Details button with icon */}
-      <div className="flex justify-center w-full mt-auto">
+      {/* Buttons */}
+      <div className="flex justify-center gap-3 w-full mt-auto text-xl">
         <Link
           href={`/productsDetails/${_id}`}
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-800 text-lg font-medium"
+          className="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-100 transition"
+          title="See Details"
         >
           <FaInfoCircle />
-          See Details
         </Link>
+
+        {showButtons && (
+          <>
+            <Link
+              href={`/updateProduct/${_id}`}
+              className="text-yellow-600 hover:text-yellow-800 p-2 rounded-full hover:bg-yellow-100 transition"
+              title="Update Product"
+            >
+              <FaEdit />
+            </Link>
+
+            <button
+              onClick={handleDelete}
+              className="text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-100 transition"
+              title="Delete Product"
+            >
+              <FaTrash />
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
