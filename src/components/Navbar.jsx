@@ -16,6 +16,7 @@ export default function Navbar() {
   // LINKS without Add Product
   const baseLinks = [
     { name: "Home", href: "/" },
+    { name: "All Products", href: "/products" }, // <-- Added All Products
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
