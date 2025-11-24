@@ -48,7 +48,7 @@ export default function UpdateProduct() {
       });
 
       // Redirect to myImports page
-      router.push("/myImports");
+      router.push("/myProducts");
     } catch (err) {
       console.error(err);
       Swal.fire({
