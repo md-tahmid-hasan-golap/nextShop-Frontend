@@ -13,12 +13,17 @@ export default function Navbar() {
 
   const { user, logOut } = useContext(AuthContext);
 
-  const links = [
+  // LINKS without Add Product
+  const baseLinks = [
     { name: "Home", href: "/" },
-    { name: "Add Product", href: "/addProduct" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
+
+  // Add Product only if user exists
+  const links = user
+    ? [...baseLinks, { name: "Add Product", href: "/addProduct" }]
+    : baseLinks;
 
   const handleLogout = () => {
     logOut()
@@ -27,11 +32,8 @@ export default function Navbar() {
           title: "Logged out!",
           text: "You have successfully logged out.",
           icon: "success",
-          confirmButtonText: "OK",
           timer: 1500,
-          willClose: () => {
-            router.push("/");
-          },
+          willClose: () => router.push("/"),
         });
       })
       .catch((err) => {
@@ -39,7 +41,6 @@ export default function Navbar() {
           title: "Error!",
           text: err.message,
           icon: "error",
-          confirmButtonText: "OK",
         });
       });
   };
@@ -70,23 +71,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop Auth Buttons */}
+        {/* Desktop Auth */}
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <>
-              {/* User Photo with Hover Name Below */}
-              {user.photoURL && (
-                <div className="relative group flex flex-col items-center">
-                  <img
-                    src={user.photoURL}
-                    alt="User Avatar"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    {user.displayName || "User"}
-                  </span>
-                </div>
-              )}
+              {/* User Photo with fallback */}
+              <div className="relative group flex flex-col items-center">
+                <img
+                  src={
+                    user.photoURL ||
+                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  }
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full object-cover border border-gray-300"
+                />
+                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                  {user.displayName || "User"}
+                </span>
+              </div>
+
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
@@ -143,18 +146,17 @@ export default function Navbar() {
           <div className="flex gap-2 mt-2 items-center">
             {user ? (
               <>
-                {user.photoURL && (
-                  <div className="relative group flex flex-col items-center">
-                    <img
-                      src={user.photoURL}
-                      alt="User Avatar"
-                      className="w-8 h-8 rounded-full object-cover"
-                    />
-                    <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                      {user.displayName || "User"}
-                    </span>
-                  </div>
-                )}
+                <div className="relative group flex flex-col items-center">
+                  <img
+                    src={
+                      user.photoURL ||
+                      "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    }
+                    alt="User Avatar"
+                    className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                  />
+                </div>
+
                 <button
                   onClick={handleLogout}
                   className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
