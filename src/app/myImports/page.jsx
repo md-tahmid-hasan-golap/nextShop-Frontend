@@ -3,7 +3,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "@/components/AuthContext";
 import axios from "axios";
-import { FaInfoCircle, FaEdit, FaTrash } from "react-icons/fa";
+import { FaInfoCircle, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Link from "next/link";
 
@@ -13,9 +13,7 @@ export default function MyImports() {
   const [loadingData, setLoadingData] = useState(true);
 
   useEffect(() => {
-    if (user) {
-      fetchImports();
-    }
+    if (user) fetchImports();
   }, [user]);
 
   const fetchImports = async () => {
@@ -71,8 +69,9 @@ export default function MyImports() {
         My Imports
       </h2>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-x-auto rounded-lg shadow">
+        <table className="min-w-full bg-white">
           <thead className="bg-amber-600 text-white">
             <tr>
               <th className="px-4 py-2 text-left">Image</th>
@@ -103,9 +102,9 @@ export default function MyImports() {
                 <td className="px-4 py-2">
                   {new Date(item.date).toLocaleDateString()}
                 </td>
-                <td className="px-4 py-2 flex flex-wrap gap-2">
+                <td className="px-4 py-2 flex gap-2">
                   <Link
-                    href={`/productsDetails/${item.productId}`} // <-- এখানে productId বসানো হলো
+                    href={`/productsDetails/${item.productId}`}
                     className="flex items-center gap-1 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
                   >
                     <FaInfoCircle /> Details
@@ -122,6 +121,52 @@ export default function MyImports() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="md:hidden grid grid-cols-1 gap-4">
+        {imports.map((item) => (
+          <div
+            key={item._id}
+            className="bg-white shadow rounded-lg p-4 flex flex-col gap-3 border"
+          >
+            <img
+              src={item.imageUrl || "https://via.placeholder.com/80"}
+              className="w-full h-40 object-cover rounded"
+            />
+
+            <h3 className="text-xl font-semibold">{item.title}</h3>
+            <p className="text-gray-600">{item.category}</p>
+
+            <div className="flex justify-between text-sm">
+              <span className="font-medium text-amber-600">${item.price}</span>
+              <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">
+                {item.priority}
+              </span>
+            </div>
+
+            <p className="text-sm">Stock: {item.stock}</p>
+            <p className="text-sm">
+              Date: {new Date(item.date).toLocaleDateString()}
+            </p>
+
+            <div className="flex gap-3 mt-2">
+              <Link
+                href={`/productsDetails/${item.productId}`}
+                className="w-full flex justify-center items-center gap-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+              >
+                <FaInfoCircle /> Details
+              </Link>
+
+              <button
+                onClick={() => handleDelete(item._id)}
+                className="w-full flex justify-center items-center gap-1 bg-red-600 text-white py-2 rounded hover:bg-red-700"
+              >
+                <FaTrash /> Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

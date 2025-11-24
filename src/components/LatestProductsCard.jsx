@@ -3,18 +3,31 @@
 import Link from "next/link";
 import { FaInfoCircle, FaEdit, FaTrash } from "react-icons/fa";
 import { useContext } from "react";
-import { AuthContext } from "@/components/AuthContext"; // adjust path
+import { AuthContext } from "@/components/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function LatestProductCards({
   product,
+  index = 0,
   showButtons = false,
   onDelete,
 }) {
+  const router = useRouter();
   const { _id, category, imageUrl, price, priority, shortDescription, title } =
     product;
   const { user } = useContext(AuthContext);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6, type: "spring" },
+    }),
+  };
 
   const handleDelete = async () => {
     const result = await Swal.fire({
@@ -29,10 +42,12 @@ export default function LatestProductCards({
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/deleteImportProduct/${_id}`);
+        await axios.delete(`http://localhost:5000/deleteMyProduct/${_id}`);
+
         Swal.fire("Deleted!", "Product has been deleted.", "success");
 
-        // ✅ Call parent callback to remove from UI
+        router.push("/products");
+
         if (onDelete) onDelete(_id);
       } catch (err) {
         console.error(err);
@@ -42,7 +57,15 @@ export default function LatestProductCards({
   };
 
   return (
-    <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-transform transform hover:scale-105 p-4 flex flex-col items-center text-center relative">
+    <motion.div
+      custom={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={cardVariants}
+      className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-transform transform 
+      hover:scale-105 p-4 flex flex-col items-center text-center relative"
+    >
       <img
         src={imageUrl || "https://via.placeholder.com/300x200"}
         alt={title}
@@ -50,6 +73,7 @@ export default function LatestProductCards({
       />
 
       <p className="text-sm font-medium text-amber-600 mb-2">{category}</p>
+
       <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2">
         {title}
       </h3>
@@ -65,7 +89,6 @@ export default function LatestProductCards({
         </span>
       </div>
 
-      {/* Buttons */}
       <div className="flex justify-center gap-3 w-full mt-auto text-xl">
         <Link
           href={`/productsDetails/${_id}`}
@@ -95,6 +118,6 @@ export default function LatestProductCards({
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

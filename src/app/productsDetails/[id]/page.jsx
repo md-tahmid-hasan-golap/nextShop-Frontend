@@ -14,14 +14,12 @@ export default function ProductsDetails() {
   const [product, setProduct] = useState(null);
   const [productLoading, setProductLoading] = useState(true);
 
-  // ---------------- PRIVATE ROUTE CHECK ----------------
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
     }
   }, [loading, user, router]);
 
-  // ---------------- FETCH PRODUCT ----------------
   useEffect(() => {
     if (!id) return;
 
@@ -37,7 +35,6 @@ export default function ProductsDetails() {
       });
   }, [id]);
 
-  // ---------------- LOADING COMPONENT ----------------
   const LoadingUI = () => (
     <div className="flex justify-center items-center h-screen gap-3">
       <span className="loading loading-ring loading-xl"></span>
@@ -46,9 +43,8 @@ export default function ProductsDetails() {
     </div>
   );
 
-  // ---------------- BUTTON CLICK HANDLER ----------------
   const handleImportNow = async () => {
-    if (!product) return; // safeguard
+    if (!product) return;
 
     const importData = {
       productId: product._id,
@@ -75,7 +71,6 @@ export default function ProductsDetails() {
         showConfirmButton: false,
       });
 
-      // 1.5s পর /myImports route এ redirect
       setTimeout(() => {
         router.push("/myImports");
       }, 1500);
@@ -89,13 +84,8 @@ export default function ProductsDetails() {
     }
   };
 
-  // Login check loading
   if (loading) return <LoadingUI />;
-
-  // Not logged in redirect
   if (!user) return null;
-
-  // Product fetching loading
   if (productLoading) return <LoadingUI />;
 
   return (
@@ -103,6 +93,16 @@ export default function ProductsDetails() {
       <h1 className="text-4xl font-bold text-amber-600 text-center mb-8">
         {product.title}
       </h1>
+
+      {/* Back to Home Button */}
+      <div className="mb-4">
+        <button
+          onClick={() => router.push("/")}
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded"
+        >
+          ⬅ Back to Home
+        </button>
+      </div>
 
       <div className="flex flex-col md:flex-row gap-6 bg-white shadow-lg rounded-xl p-6">
         <div className="md:w-1/2 flex justify-center">
@@ -149,11 +149,10 @@ export default function ProductsDetails() {
             <span className="font-medium">Added on:</span> {product.date}
           </p>
 
-          {/* ---------------- Import Now Button ---------------- */}
           <div className="mt-6 flex justify-end">
             <button
               onClick={handleImportNow}
-              disabled={!product} // safeguard
+              disabled={!product}
               className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
             >
               Import Now
