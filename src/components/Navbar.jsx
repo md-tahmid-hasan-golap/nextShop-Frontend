@@ -16,14 +16,18 @@ export default function Navbar() {
   // LINKS without Add Product
   const baseLinks = [
     { name: "Home", href: "/" },
-    { name: "All Products", href: "/products" }, // <-- Added All Products
+    { name: "All Products", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
-  // Add Product only if user exists
+  // Add Product and My Imports only if user exists
   const links = user
-    ? [...baseLinks, { name: "Add Product", href: "/addProduct" }]
+    ? [
+        ...baseLinks,
+        { name: "Add Product", href: "/addProduct" },
+        { name: "My Imports", href: "/myImports" }, // Private route
+      ]
     : baseLinks;
 
   const handleLogout = () => {

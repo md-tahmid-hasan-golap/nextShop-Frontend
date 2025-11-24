@@ -1,92 +1,164 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "@/components/AuthContext";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function ProductsDetails() {
+  const router = useRouter();
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const { user, loading } = useContext(AuthContext);
 
+  const [product, setProduct] = useState(null);
+  const [productLoading, setProductLoading] = useState(true);
+
+  // ---------------- PRIVATE ROUTE CHECK ----------------
   useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [loading, user, router]);
+
+  // ---------------- FETCH PRODUCT ----------------
+  useEffect(() => {
+    if (!id) return;
+
     fetch(`http://localhost:5000/productsDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
+        setProductLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setProductLoading(false);
       });
   }, [id]);
 
-  if (!product)
-    return (
-      <p className="text-center mt-10 text-gray-500 text-lg">Loading...</p>
-    );
+  // ---------------- LOADING COMPONENT ----------------
+  const LoadingUI = () => (
+    <div className="flex justify-center items-center h-screen gap-3">
+      <span className="loading loading-ring loading-xl"></span>
+      <span className="loading loading-ring loading-xl"></span>
+      <span className="loading loading-ring loading-xl"></span>
+    </div>
+  );
 
-  const {
-    title,
-    shortDescription,
-    fullDescription,
-    price,
-    category,
-    priority,
-    stock,
-    imageUrl,
-    date,
-  } = product;
+  // ---------------- BUTTON CLICK HANDLER ----------------
+  const handleImportNow = async () => {
+    if (!product) return; // safeguard
+
+    const importData = {
+      productId: product._id,
+      title: product.title,
+      shortDescription: product.shortDescription,
+      fullDescription: product.fullDescription,
+      price: product.price,
+      category: product.category,
+      priority: product.priority,
+      stock: product.stock,
+      imageUrl: product.imageUrl,
+      date: product.date,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:5000/imports", importData);
+      console.log("POST response:", res.data);
+
+      Swal.fire({
+        title: "Success!",
+        text: "Product imported successfully!",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      // 1.5s পর /myImports route এ redirect
+      setTimeout(() => {
+        router.push("/myImports");
+      }, 1500);
+    } catch (error) {
+      console.error("POST error:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to import product.",
+        icon: "error",
+      });
+    }
+  };
+
+  // Login check loading
+  if (loading) return <LoadingUI />;
+
+  // Not logged in redirect
+  if (!user) return null;
+
+  // Product fetching loading
+  if (productLoading) return <LoadingUI />;
 
   return (
-    <div className="max-w-5xl mx-auto p-4 sm:p-6 md:p-8">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-amber-600 text-center mb-6">
-        {title}
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-4xl font-bold text-amber-600 text-center mb-8">
+        {product.title}
       </h1>
 
       <div className="flex flex-col md:flex-row gap-6 bg-white shadow-lg rounded-xl p-6">
-        <div className="md:w-1/2 flex justify-center items-start">
+        <div className="md:w-1/2 flex justify-center">
           <img
-            src={imageUrl || "https://via.placeholder.com/400x300"}
-            alt={title}
+            src={product.imageUrl}
+            alt={product.title}
             className="w-full h-auto rounded-lg object-cover"
           />
         </div>
 
         <div className="md:w-1/2 flex flex-col gap-4">
-          <p className="text-gray-700 text-base md:text-lg">
-            {shortDescription}
-          </p>
+          <p className="text-gray-700 text-lg">{product.shortDescription}</p>
+          <p className="text-gray-600">{product.fullDescription}</p>
 
-          <p className="text-gray-600 text-sm md:text-base">
-            {fullDescription}
-          </p>
-
-          <p className="text-amber-600 font-bold text-xl md:text-2xl">
-            Price: ${price}
+          <p className="text-amber-600 font-bold text-2xl">
+            Price: ${product.price}
           </p>
 
           <p className="text-gray-500">
-            <span className="font-medium">Category:</span> {category}
+            <span className="font-medium">Category:</span> {product.category}
           </p>
 
           <p className="text-gray-500">
             <span className="font-medium">Priority:</span>{" "}
             <span
               className={`px-2 py-1 rounded ${
-                priority === "High"
-                  ? "bg-red-100 text-red-700"
-                  : priority === "Medium"
-                  ? "bg-yellow-100 text-yellow-700"
-                  : "bg-green-100 text-green-700"
+                product.priority === "High"
+                  ? "bg-red-100 text-red-600"
+                  : product.priority === "Medium"
+                  ? "bg-yellow-100 text-yellow-600"
+                  : "bg-green-100 text-green-600"
               }`}
             >
-              {priority || "Normal"}
+              {product.priority}
             </span>
           </p>
 
           <p className="text-gray-500">
             <span className="font-medium">Stock:</span>{" "}
-            {stock > 0 ? stock : "Out of Stock"}
+            {product.stock > 0 ? product.stock : "Out of Stock"}
           </p>
 
           <p className="text-gray-400 text-sm">
-            <span className="font-medium">Added on:</span> {date}
+            <span className="font-medium">Added on:</span> {product.date}
           </p>
+
+          {/* ---------------- Import Now Button ---------------- */}
+          <div className="mt-6 flex justify-end">
+            <button
+              onClick={handleImportNow}
+              disabled={!product} // safeguard
+              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+            >
+              Import Now
+            </button>
+          </div>
         </div>
       </div>
     </div>
