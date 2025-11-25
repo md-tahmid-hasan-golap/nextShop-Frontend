@@ -23,7 +23,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:5000/productsDetails/${id}`)
+    fetch(`https://next-shop-ten-ruby.vercel.app/productsDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
