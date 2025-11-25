@@ -18,7 +18,9 @@ export default function MyImports() {
 
   const fetchImports = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/myImports");
+      const res = await axios.get(
+        "https://next-shop-server-one.vercel.app/myImports"
+      );
       setImports(res.data);
       setLoadingData(false);
     } catch (error) {
@@ -39,7 +41,9 @@ export default function MyImports() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/deleteImportProduct/${id}`);
+          await axios.delete(
+            `https://next-shop-server-one.vercel.app/deleteImportProduct/${id}`
+          );
           setImports(imports.filter((item) => item._id !== id));
           Swal.fire("Deleted!", "Your import has been deleted.", "success");
         } catch (error) {
