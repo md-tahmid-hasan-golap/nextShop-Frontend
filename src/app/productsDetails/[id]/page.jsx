@@ -60,7 +60,10 @@ export default function ProductsDetails() {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/imports", importData);
+      const res = await axios.post(
+        "https://next-shop-server-one.vercel.app/imports",
+        importData
+      );
       console.log("POST response:", res.data);
 
       Swal.fire({
