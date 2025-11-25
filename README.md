@@ -23,11 +23,11 @@ YOUR_SERVER_LIVE_LINK
 
 ### 🖥 Client Repo
 
-YOUR_CLIENT_REPOSITORY_LINK
+[YOUR_CLIENT_REPOSITORY_LINK](https://github.com/md-tahmid-hasan-golap/nextShop-Frontend)
 
 ### 🗄 Server Repo
 
-YOUR_SERVER_REPOSITORY_LINK
+[YOUR_SERVER_REPOSITORY_LINK](https://github.com/md-tahmid-hasan-golap/nextShop-Backend)
 
 ---
 
