@@ -16,7 +16,7 @@ export default function MyProduct() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `https://next-shop-ten-ruby.vercel.app/myProducts/${user.email}`
+          `http://localhost:5000/myProducts/${user.email}`
         );
         setProducts(res.data);
       } catch (err) {

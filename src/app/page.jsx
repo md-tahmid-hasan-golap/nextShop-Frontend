@@ -12,7 +12,7 @@ import LatestProduct from "@/components/LatestProducts";
 export default function Home() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://next-shop-ten-ruby.vercel.app/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

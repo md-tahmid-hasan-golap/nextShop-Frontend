@@ -9,7 +9,7 @@ export default function AllProducts() {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("https://next-shop-ten-ruby.vercel.app/allProducts")
+    fetch("https://next-shop-server-one.vercel.app/allProducts")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

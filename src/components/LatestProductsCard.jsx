@@ -42,9 +42,7 @@ export default function LatestProductCards({
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(
-          `https://next-shop-ten-ruby.vercel.app/deleteMyProduct/${_id}`
-        );
+        await axios.delete(`http://localhost:5000/deleteMyProduct/${_id}`);
 
         Swal.fire("Deleted!", "Product has been deleted.", "success");
 

@@ -18,7 +18,7 @@ export default function UpdateProduct() {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(
-          `https://next-shop-ten-ruby.vercel.app/productsDetails/${id}`
+          `http://localhost:5000/productsDetails/${id}`
         );
         setProduct(res.data);
         setLoading(false);
@@ -37,10 +37,7 @@ export default function UpdateProduct() {
     const data = Object.fromEntries(formData);
 
     try {
-      await axios.put(
-        `https://next-shop-ten-ruby.vercel.app/updateImportProduct/${id}`,
-        data
-      );
+      await axios.put(`http://localhost:5000/updateImportProduct/${id}`, data);
 
       // SweetAlert success
       await Swal.fire({
