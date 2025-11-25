@@ -1,4 +1,4 @@
-![Auth Shop Screenshot](https://i.postimg.cc/3r4Q49jX/Screenshot-2025-11-25-171652.png)
+![Auth Shop Screenshot](https://i.postimg.cc/kXw1SXKW/Screenshot-2025-11-26-014132.png)
 
 # 🛒 Auth Shop – Next.js Full Stack Application
 
