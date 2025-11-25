@@ -148,7 +148,7 @@ export default function Navbar() {
               className={`block px-3 py-2 rounded-md font-medium ${
                 pathname === link.href
                   ? "text-[#CAEB66] bg-black"
-                  : "text-amber-600 hover:text-amber-800"
+                  : "text-black hover:text-blue-600 font-bold hover:underline"
               }`}
             >
               {link.name}
