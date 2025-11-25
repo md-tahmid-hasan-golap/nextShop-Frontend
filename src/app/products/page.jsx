@@ -20,8 +20,10 @@ export default function AllProducts() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-amber-600 text-center mb-6">
-        All Products
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-6">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          All Products
+        </span>
       </h2>
 
       {/* 🔍 Search Bar (Right Corner + Small) */}
@@ -32,10 +34,10 @@ export default function AllProducts() {
             placeholder="Search..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-full py-2 pl-9 pr-3 border border-amber-500 rounded-lg shadow text-sm
-                       focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-full py-2 pl-10 pr-3 border border-gray-300 rounded-lg shadow-sm text-sm
+                 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
           />
-          <FaSearch className="absolute left-2 top-1/2 -translate-y-1/2 text-amber-600 text-sm" />
+          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
         </div>
       </div>
 

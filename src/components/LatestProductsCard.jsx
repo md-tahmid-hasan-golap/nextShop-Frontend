@@ -25,7 +25,7 @@ export default function LatestProductCards({
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6, type: "spring" },
+      transition: { delay: i * 0.15, duration: 0.6, type: "spring" },
     }),
   };
 
@@ -45,11 +45,8 @@ export default function LatestProductCards({
         await axios.delete(
           `https://next-shop-server-one.vercel.app/deleteMyProduct/${_id}`
         );
-
         Swal.fire("Deleted!", "Product has been deleted.", "success");
-
         router.push("/products");
-
         if (onDelete) onDelete(_id);
       } catch (err) {
         console.error(err);
@@ -65,18 +62,19 @@ export default function LatestProductCards({
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={cardVariants}
-      className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-transform transform 
-      hover:scale-105 p-4 flex flex-col items-center text-center relative"
+      className="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 p-4 flex flex-col items-center text-center relative"
     >
       <img
         src={imageUrl || "https://via.placeholder.com/300x200"}
         alt={title}
-        className="w-full h-48 object-cover rounded-lg mb-4"
+        className="w-full h-48 object-cover rounded-xl mb-4"
       />
 
-      <p className="text-sm font-medium text-amber-600 mb-2">{category}</p>
+      <p className="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wide">
+        {category}
+      </p>
 
-      <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+      <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
         {title}
       </h3>
 
@@ -85,8 +83,8 @@ export default function LatestProductCards({
       </p>
 
       <div className="flex items-center justify-between w-full px-2 mb-4">
-        <span className="text-amber-600 font-bold text-lg">${price || 0}</span>
-        <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
+        <span className="text-gray-900 font-bold text-lg">${price || 0}</span>
+        <span className="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full">
           {priority || "Normal"}
         </span>
       </div>
@@ -94,7 +92,7 @@ export default function LatestProductCards({
       <div className="flex justify-center gap-3 w-full mt-auto text-xl">
         <Link
           href={`/productsDetails/${_id}`}
-          className="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-100 transition"
+          className="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-50 transition"
           title="See Details"
         >
           <FaInfoCircle />
@@ -104,7 +102,7 @@ export default function LatestProductCards({
           <>
             <Link
               href={`/updateProduct/${_id}`}
-              className="text-yellow-600 hover:text-yellow-800 p-2 rounded-full hover:bg-yellow-100 transition"
+              className="text-yellow-600 hover:text-yellow-800 p-2 rounded-full hover:bg-yellow-50 transition"
               title="Update Product"
             >
               <FaEdit />
@@ -112,7 +110,7 @@ export default function LatestProductCards({
 
             <button
               onClick={handleDelete}
-              className="text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-100 transition"
+              className="text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-50 transition"
               title="Delete Product"
             >
               <FaTrash />

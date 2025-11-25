@@ -71,9 +71,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-200 to-amber-500 p-4 sm:p-6">
+    <div className="min-h-screen flex items-center justify-center  p-4 sm:p-6">
       <div className="bg-white shadow-xl p-6 sm:p-8 rounded-2xl w-full max-w-md sm:max-w-lg lg:max-w-xl">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-amber-600 mb-6">
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-center mb-6 
+               bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+        >
           Login
         </h2>
 
@@ -102,7 +105,9 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 sm:py-2.5 rounded-lg transition"
+            className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
+             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
           >
             Login
           </button>
@@ -111,7 +116,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full mt-4 border border-gray-400 text-black font-semibold py-2 sm:py-2.5 rounded-lg hover:bg-gray-100 transition"
+            className="w-full mt-4 border border-gray-400 text-black font-semibold py-2 sm:py-2.5 rounded-lg hover:bg-gray-100 transition shadow-sm"
           >
             Sign in with Google
           </button>
@@ -119,7 +124,10 @@ export default function LoginPage() {
 
         <p className="text-center mt-4 text-gray-600 text-sm sm:text-base">
           Don't have an account?{" "}
-          <Link href="/register" className="text-amber-700 font-semibold">
+          <Link
+            href="/register"
+            className="text-blue-500 underline font-semibold"
+          >
             Register
           </Link>
         </p>

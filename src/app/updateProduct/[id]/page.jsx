@@ -77,7 +77,10 @@ export default function UpdateProduct() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md mt-6">
-      <h1 className="text-3xl font-bold mb-6 text-center text-amber-600">
+      <h1
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-6 
+               bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+      >
         Update Product
       </h1>
 
@@ -174,7 +177,9 @@ export default function UpdateProduct() {
         <div className="col-span-1 md:col-span-2">
           <button
             type="submit"
-            className="w-full bg-amber-600 text-white py-2 rounded hover:bg-amber-700 transition"
+            className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md
+             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
           >
             Update Product
           </button>

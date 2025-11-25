@@ -24,7 +24,7 @@ export default function Banner() {
             Quickly add new products to your store
           </p>
           <Link href="/addProduct">
-            <button className="bg-white text-amber-600 font-semibold px-6 py-2 rounded hover:bg-gray-100 transition">
+            <button className="bg-white text-black font-semibold px-6 py-2 rounded hover:bg-gray-100 transition">
               Add Product
             </button>
           </Link>

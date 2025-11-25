@@ -19,9 +19,12 @@ const blogPosts = [
 export default function BlogSection() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-center text-amber-600 mb-10">
-        Latest Blogs
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Latest Blogs
+        </span>
       </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {blogPosts.map((post) => (
           <div

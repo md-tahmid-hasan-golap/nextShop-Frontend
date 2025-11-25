@@ -39,8 +39,10 @@ export default function MyProduct() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-600 text-center my-4">
-        My Added Products
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-center my-4">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          My Added Products
+        </span>
       </h2>
 
       {products.length === 0 ? (

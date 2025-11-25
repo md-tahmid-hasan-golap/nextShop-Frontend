@@ -61,8 +61,9 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <h2 className="text-2xl font-bold text-amber-600 md:text-3xl lg:text-4xl">
-          MyShop
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold">
+          <span className="text-purple-600">My</span>
+          <span className="text-pink-600">Shop</span>
         </h2>
 
         {/* Desktop Links */}
@@ -74,7 +75,7 @@ export default function Navbar() {
                 className={`px-3 py-2 rounded-md font-medium ${
                   pathname === link.href
                     ? "text-[#CAEB66] bg-black"
-                    : "text-amber-600 hover:text-amber-800"
+                    : "text-black hover:text-blue-600 font-bold hover:underline"
                 }`}
               >
                 {link.name}

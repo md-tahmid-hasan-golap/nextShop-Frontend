@@ -11,32 +11,31 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-amber-600 text-white py-12 rounded-md shadow-lg">
+    <footer className="bg-black text-white py-12 rounded-md shadow-lg">
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Left: Links */}
         <div className="flex flex-wrap gap-6 justify-center md:justify-start font-medium">
           <Link
             href="/"
-            className="transition-colors duration-300 hover:text-amber-200"
+            className="transition-colors duration-300 hover:text-gray-400"
           >
             Home
           </Link>
           <Link
             href="/addProduct"
-            className="transition-colors duration-300 hover:text-amber-200"
+            className="transition-colors duration-300 hover:text-gray-400"
           >
             Add Product
           </Link>
           <Link
             href="/about"
-            className="transition-colors duration-300 hover:text-amber-200"
+            className="transition-colors duration-300 hover:text-gray-400"
           >
             About
           </Link>
-
           <Link
             href="/contact"
-            className="transition-colors duration-300 hover:text-amber-200"
+            className="transition-colors duration-300 hover:text-gray-400"
           >
             Contact
           </Link>
@@ -47,21 +46,21 @@ export default function Footer() {
           <a
             href="https://github.com/md-tahmid-hasan-golap"
             target="_blank"
-            className="transition-transform transform hover:scale-125 hover:text-gray-900"
+            className="transition-transform transform hover:scale-125 hover:text-gray-400"
           >
             <FaGithub />
           </a>
           <a
             href="https://www.facebook.com/g.lap.raj"
             target="_blank"
-            className="transition-transform transform hover:scale-125 hover:text-blue-600"
+            className="transition-transform transform hover:scale-125 hover:text-gray-400"
           >
             <FaFacebook />
           </a>
           <a
             href="https://www.linkedin.com/in/tahmid-hasan-golap/?locale=en_US"
             target="_blank"
-            className="transition-transform transform hover:scale-125 hover:text-blue-700"
+            className="transition-transform transform hover:scale-125 hover:text-gray-400"
           >
             <FaLinkedin />
           </a>

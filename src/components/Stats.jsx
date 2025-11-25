@@ -9,11 +9,12 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-100 py-12 max-w-6xl mx-auto rounded-lg">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-amber-600 mb-10">
-          Our Achievements
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
+          <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Our Achievements
+          </span>
         </h2>
 
         {/* Stats Cards */}
@@ -23,7 +24,7 @@ export default function StatsSection() {
               key={stat.id}
               className="bg-white p-6 rounded shadow hover:shadow-lg transition"
             >
-              <h3 className="text-3xl font-bold text-amber-600 mb-2">
+              <h3 className="text-3xl font-bold text-black mb-2">
                 {stat.value}
               </h3>
               <p className="text-gray-600">{stat.title}</p>

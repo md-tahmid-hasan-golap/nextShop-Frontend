@@ -29,8 +29,10 @@ const sectionsData = [
 export default function Sections() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-center mb-10 text-amber-600">
-        Why Choose Us
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Why Choose Us
+        </span>
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

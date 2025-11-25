@@ -69,15 +69,17 @@ export default function MyImports() {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center text-amber-600 mb-8">
-        My Imports
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          My Imports
+        </span>
       </h2>
 
       {/* Scrollable Table for All Screens */}
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="min-w-full bg-white">
-          <thead className="bg-amber-600 text-white">
-            <tr>
+          <thead className="text-white">
+            <tr className="bg-gradient-to-r from-purple-600 to-pink-600">
               <th className="px-4 py-2 text-left">Image</th>
               <th className="px-4 py-2 text-left">Title</th>
               <th className="px-4 py-2 text-left">Category</th>
@@ -88,6 +90,7 @@ export default function MyImports() {
               <th className="px-4 py-2 text-left">Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {imports.map((item) => (
               <tr key={item._id} className="border-b hover:bg-gray-50">

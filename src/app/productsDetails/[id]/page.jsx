@@ -93,7 +93,8 @@ export default function ProductsDetails() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-4xl font-bold text-amber-600 text-center mb-8">
+      {/* Product Title */}
+      <h1 className="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
         {product.title}
       </h1>
 
@@ -101,13 +102,15 @@ export default function ProductsDetails() {
       <div className="mb-4">
         <button
           onClick={() => router.push("/")}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded"
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded transition"
         >
           ⬅ Back to Home
         </button>
       </div>
 
+      {/* Product Details */}
       <div className="flex flex-col md:flex-row gap-6 bg-white shadow-lg rounded-xl p-6">
+        {/* Product Image */}
         <div className="md:w-1/2 flex justify-center">
           <img
             src={product.imageUrl}
@@ -116,11 +119,12 @@ export default function ProductsDetails() {
           />
         </div>
 
+        {/* Product Info */}
         <div className="md:w-1/2 flex flex-col gap-4">
           <p className="text-gray-700 text-lg">{product.shortDescription}</p>
           <p className="text-gray-600">{product.fullDescription}</p>
 
-          <p className="text-amber-600 font-bold text-2xl">
+          <p className="text-2xl font-extrabold text-purple-600">
             Price: ${product.price}
           </p>
 
@@ -137,7 +141,7 @@ export default function ProductsDetails() {
                   : product.priority === "Medium"
                   ? "bg-yellow-100 text-yellow-600"
                   : "bg-green-100 text-green-600"
-              }`}
+              } font-semibold`}
             >
               {product.priority}
             </span>
@@ -152,11 +156,12 @@ export default function ProductsDetails() {
             <span className="font-medium">Added on:</span> {product.date}
           </p>
 
+          {/* Import Now Button */}
           <div className="mt-6 flex justify-end">
             <button
               onClick={handleImportNow}
               disabled={!product}
-              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 text-white font-semibold py-2 px-4 rounded disabled:opacity-50 transition-all duration-300"
             >
               Import Now
             </button>

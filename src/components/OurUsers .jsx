@@ -35,11 +35,12 @@ const cardVariants = {
 
 export default function Testimonials() {
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 py-12 max-w-6xl mx-auto mb-5 rounded-lg">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-center text-amber-600">
-          What Our Users Say
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12">
+          <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            What Our Users Say
+          </span>
         </h2>
 
         {/* Testimonials Grid */}
@@ -55,13 +56,14 @@ export default function Testimonials() {
               variants={cardVariants}
             >
               <p className="mb-4 text-gray-700 italic">"{testi.feedback}"</p>
+
               <div className="flex items-center mt-4">
                 <img
                   src={testi.image}
                   alt={testi.name}
                   className="w-14 h-14 rounded-full mr-4 object-cover"
                 />
-                <h3 className="font-semibold text-amber-600">{testi.name}</h3>
+                <h3 className="font-semibold text-black">{testi.name}</h3>
               </div>
             </motion.div>
           ))}

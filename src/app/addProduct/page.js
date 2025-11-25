@@ -13,7 +13,6 @@ export default function ProductsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Check if user is logged in
     if (!user) {
       Swal.fire({
         title: "Error!",
@@ -40,8 +39,8 @@ export default function ProductsPage() {
           confirmButtonColor: "#f59e0b",
         });
 
-        form.reset(); // form reset
-        router.push("/myProducts"); // ✅ redirect after success
+        form.reset();
+        router.push("/myProducts");
       })
       .catch((error) => {
         Swal.fire({
@@ -50,110 +49,110 @@ export default function ProductsPage() {
           icon: "error",
           confirmButtonColor: "#ef4444",
         });
-
         console.log("Error:", error);
       });
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md mt-6">
-      <h1 className="text-3xl font-bold mb-6 text-center text-amber-600">
-        Add Product
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md my-7">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-6">
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Add Product
+        </span>
       </h1>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Title */}
         <div className="col-span-1 md:col-span-2">
-          <label className="block mb-1 font-medium">Title</label>
+          <label className="block mb-1 font-medium text-black">Title</label>
           <input
             type="text"
             name="title"
-            placeholder="Title"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Enter product title"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Short Description */}
         <div className="col-span-1 md:col-span-2">
-          <label className="block mb-1 font-medium">Short Description</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Short Description</label>
           <input
             type="text"
             name="shortDescription"
-            placeholder="Short Description"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Brief description"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Full Description */}
         <div className="col-span-1 md:col-span-2">
-          <label className="block mb-1 font-medium">Full Description</label>
-          <input
-            type="text"
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Full Description</label>
+          <textarea
             name="fullDescription"
-            placeholder="Full Description"
-            className="w-full border border-gray-300 rounded px-3 py-2 h-28"
+            placeholder="Detailed description"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition h-28 resize-none"
             required
           />
         </div>
 
         {/* Price */}
         <div>
-          <label className="block mb-1 font-medium">Price</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Price</label>
           <input
             type="number"
             name="price"
-            placeholder="Price"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Enter price"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Category */}
         <div>
-          <label className="block mb-1 font-medium">Category</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Category</label>
           <input
             type="text"
             name="category"
-            placeholder="Category"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Enter category"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Priority */}
         <div>
-          <label className="block mb-1 font-medium">Priority</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Priority</label>
           <input
             type="text"
             name="priority"
-            placeholder="Priority"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="High / Medium / Low"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Stock */}
         <div>
-          <label className="block mb-1 font-medium">Stock</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Stock</label>
           <input
             type="number"
             name="stock"
-            placeholder="Stock"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Available stock"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             required
           />
         </div>
 
         {/* Image URL */}
         <div className="col-span-1 md:col-span-2">
-          <label className="block mb-1 font-medium">Image URL</label>
+          <label className="block mb-1 font-medium text-gray-700 text-sm">Image URL</label>
           <input
             type="text"
             name="imageUrl"
-            placeholder="Image URL"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            placeholder="Image URL (optional)"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
           />
         </div>
 
@@ -161,7 +160,7 @@ export default function ProductsPage() {
         <div className="col-span-1 md:col-span-2">
           <button
             type="submit"
-            className="w-full bg-amber-600 text-white py-2 rounded hover:bg-amber-700 transition"
+            className="w-full py-2 rounded text-white font-semibold transition-all duration-300 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
           >
             Add Product
           </button>
