@@ -16,7 +16,7 @@ export default function Banner() {
         className="rounded-lg overflow-hidden shadow-lg"
       >
         {/* Slide 1 - Add Product */}
-        <div className="relative h-80 md:h-96 bg-gradient-to-r from-amber-500 to-yellow-400 flex flex-col justify-center items-start p-6 md:p-12">
+        <div className="relative h-80 md:h-96 bg-gradient-to-r from-purple-500 via-pink-400 to-pink-300 flex flex-col justify-center items-start p-6 md:p-12">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             Add Your Products
           </h2>
@@ -31,7 +31,7 @@ export default function Banner() {
         </div>
 
         {/* Slide 2 - About */}
-        <div className="relative h-80 md:h-96 bg-gradient-to-r from-purple-500 to-pink-500 flex flex-col justify-center items-start p-6 md:p-12">
+        <div className="relative h-80 md:h-96 bg-gradient-to-r from-teal-400 via-sky-400 to-blue-500 flex flex-col justify-center items-start p-6 md:p-12">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             About Us
           </h2>

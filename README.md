@@ -1,4 +1,4 @@
-![Auth Shop Screenshot](https://next-shop-ten-ruby.vercel.app/screenshot.png)
+![Auth Shop Screenshot](https://i.postimg.cc/3r4Q49jX/Screenshot-2025-11-25-171652.png)
 
 # 🛒 Auth Shop – Next.js Full Stack Application
 
