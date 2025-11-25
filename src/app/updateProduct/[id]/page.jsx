@@ -18,7 +18,7 @@ export default function UpdateProduct() {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/productsDetails/${id}`
+          `https://next-shop-server-one.vercel.app/productsDetails/${id}`
         );
         setProduct(res.data);
         setLoading(false);
@@ -37,7 +37,10 @@ export default function UpdateProduct() {
     const data = Object.fromEntries(formData);
 
     try {
-      await axios.put(`http://localhost:5000/updateImportProduct/${id}`, data);
+      await axios.put(
+        `https://next-shop-server-one.vercel.app/updateImportProduct/${id}`,
+        data
+      );
 
       // SweetAlert success
       await Swal.fire({

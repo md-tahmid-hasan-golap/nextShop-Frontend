@@ -18,7 +18,9 @@ export default function MyImports() {
 
   const fetchImports = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/myImports");
+      const res = await axios.get(
+        "https://next-shop-server-one.vercel.app/myImports"
+      );
       setImports(res.data);
       setLoadingData(false);
     } catch (error) {

@@ -42,7 +42,9 @@ export default function LatestProductCards({
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/deleteMyProduct/${_id}`);
+        await axios.delete(
+          `https://next-shop-server-one.vercel.app/deleteMyProduct/${_id}`
+        );
 
         Swal.fire("Deleted!", "Product has been deleted.", "success");
 
