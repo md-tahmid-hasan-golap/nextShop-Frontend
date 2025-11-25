@@ -1,5 +1,22 @@
 # 🛒 Auth Shop – Next.js Full Stack Application
 
+## 📌 Project Overview
+
+**Auth Shop** is a modern, fully responsive **Auth + Product Shop** application built using:
+
+- **Next.js (App Router)**
+- **NextAuth.js** for authentication (Google + Credentials)
+- **Express.js backend**
+
+The project features:
+
+- Secure authentication and protected routes
+- Add & Manage Products (CRUD)
+- Item List & Item Details pages
+- Search system
+- Fully responsive UI with clean layout and smooth animations
+- Micro-interactions for enhanced UX
+
 A modern and fully responsive **Auth + Product Shop** application built using  
 **Next.js (App Router)**, **NextAuth.js authentication**, and an **Express.js backend**.  
 This project includes protected pages, secure login, product CRUD, search system,  
