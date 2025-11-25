@@ -7,27 +7,21 @@ and a polished UI with animations.
 
 ---
 
-## 🚀 Live Links
+## 🚀 Live Link
 
-### 🔗 Client Live
-
-YOUR_CLIENT_LIVE_LINK
-
-### 🔗 Server Live
-
-YOUR_SERVER_LIVE_LINK
+🔗 **Live Site:** https://next-shop-ten-ruby.vercel.app/
 
 ---
 
 ## 📂 GitHub Repositories
 
-### 🖥 Client Repo
+### 🖥 Client Repository
 
-[YOUR_CLIENT_REPOSITORY_LINK](https://github.com/md-tahmid-hasan-golap/nextShop-Frontend)
+🔗 https://github.com/md-tahmid-hasan-golap/nextShop-Frontend
 
-### 🗄 Server Repo
+### 🗄 Server Repository
 
-[YOUR_SERVER_REPOSITORY_LINK](https://github.com/md-tahmid-hasan-golap/nextShop-Backend)
+🔗 https://github.com/md-tahmid-hasan-golap/nextShop-Backend
 
 ---
 
@@ -65,7 +59,7 @@ YOUR_SERVER_LIVE_LINK
 - Headline
 - Subtitle
 - CTA Button
-- Background Image (optional)
+- Optional Background
 
 ### ✔ Four Additional Sections
 
@@ -74,8 +68,9 @@ Examples:
 - Features
 - Popular Products
 - Testimonials
-- Promo Banner  
-  (All sections contain uniform cards with hover states)
+- Promo Banner
+
+(All sections use uniform cards with hover effects)
 
 ### ✔ Footer
 
@@ -89,7 +84,7 @@ Examples:
 
 - Google Login
 - Email/Password Login
-- Redirects to `/` after success
+- Redirects to `/` after successful login
 
 ---
 
@@ -114,7 +109,7 @@ Each card contains:
 ## 4. Item Details Page
 
 - Large Banner Image
-- Title
+- Product Title
 - Full Description
 - Meta info (price, date, priority)
 - Back Button
@@ -124,9 +119,9 @@ Each card contains:
 ## 5. Protected Page: Add Product
 
 Only logged-in users can access.  
-Redirects non-auth users to `/login`.
+Others are redirected to `/login`.
 
-Form fields:
+Fields:
 
 - Title
 - Short Description
@@ -136,15 +131,17 @@ Form fields:
 - Priority
 - Image URL
 
-On success → show toast/confirmation.
+On success → toast / confirmation message
 
 ---
 
 ## 6. Protected Page: Manage Products
 
-- List all products
-- Responsive table or card grid
-- Actions: View, Delete
+- Displays all products
+- Clean, responsive table or grid
+- Actions:
+  - View
+  - Delete
 
 ---
 
