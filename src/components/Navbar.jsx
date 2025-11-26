@@ -10,7 +10,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-
   const { user, logOut } = useContext(AuthContext);
 
   const baseLinks = [
@@ -100,7 +99,6 @@ export default function Navbar() {
                   alt="User Avatar"
                   className="w-10 h-10 rounded-full object-cover border border-gray-300"
                 />
-                {/* Email only on hover */}
                 <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity">
                   {user.email || "User"}
                 </span>
@@ -136,7 +134,7 @@ export default function Navbar() {
 
         {/* Mobile */}
         <div className="md:hidden flex items-center gap-3">
-          {user && (
+          {user ? (
             <div className="flex items-center gap-2">
               <img
                 src={
@@ -152,6 +150,15 @@ export default function Navbar() {
                 Logout
               </button>
             </div>
+          ) : (
+            <Link
+              href="/login"
+              className="px-4 py-2 rounded-lg text-white text-sm font-semibold 
+                bg-gradient-to-r from-purple-500 to-pink-500 
+                shadow hover:opacity-90 transition w-full sm:w-auto"
+            >
+              Login
+            </Link>
           )}
 
           <button
