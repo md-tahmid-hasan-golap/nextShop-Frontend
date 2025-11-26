@@ -89,31 +89,40 @@ export default function LatestProductCards({
         </span>
       </div>
 
-      <div className="flex justify-center gap-3 w-full mt-auto text-xl">
+      <div className="flex flex-wrap justify-center gap-3 w-full mt-auto">
+        {/* View Button */}
         <Link
           href={`/productsDetails/${_id}`}
-          className="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-50 transition"
-          title="See Details"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-semibold 
+               bg-gradient-to-r from-purple-500 to-pink-500 shadow hover:opacity-90 transition 
+               w-full sm:w-auto"
         >
-          <FaInfoCircle />
+          <FaInfoCircle className="text-white" />
+          View
         </Link>
 
         {showButtons && (
           <>
+            {/* Update Button */}
             <Link
               href={`/updateProduct/${_id}`}
-              className="text-yellow-600 hover:text-yellow-800 p-2 rounded-full hover:bg-yellow-50 transition"
-              title="Update Product"
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-semibold 
+                   bg-yellow-500 shadow hover:bg-yellow-600 transition 
+                   w-full sm:w-auto"
             >
-              <FaEdit />
+              <FaEdit className="text-white" />
+              Update
             </Link>
 
+            {/* Delete Button */}
             <button
               onClick={handleDelete}
-              className="text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-50 transition"
-              title="Delete Product"
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-semibold 
+                   bg-red-600 shadow hover:bg-red-700 transition 
+                   w-full sm:w-auto"
             >
-              <FaTrash />
+              <FaTrash className="text-white" />
+              Delete
             </button>
           </>
         )}

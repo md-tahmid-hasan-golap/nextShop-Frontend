@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const { user, logOut } = useContext(AuthContext);
 
-  // Base links (সব ইউজারের জন্য)
+  // Base links
   const baseLinks = [
     { name: "Home", href: "/" },
     { name: "All Products", href: "/products" },
@@ -21,20 +21,19 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Private links (লগইন থাকা ইউজারের জন্য)
+  // Private links
   const privateLinks = user
     ? [
-        { name: "My Products", href: "/myProducts" }, // All Products এর পরে
+        { name: "My Products", href: "/myProducts" },
         { name: "Add Product", href: "/addProduct" },
         { name: "My Imports", href: "/myImports" },
       ]
     : [];
 
-  // Final links
   const links = [
-    ...baseLinks.slice(0, 2), // Home + All Products
-    ...privateLinks, // My Products, Add Product, My Imports
-    ...baseLinks.slice(2), // About + Contact
+    ...baseLinks.slice(0, 2),
+    ...privateLinks,
+    ...baseLinks.slice(2),
   ];
 
   const handleLogout = () => {
@@ -127,10 +126,30 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center">
+        {/* ⭐ Mobile Top Right: Avatar + Logout + Menu */}
+        <div className="md:hidden flex items-center gap-3">
+          {user && (
+            <div className="flex items-center gap-2">
+              <img
+                src={
+                  user.photoURL ||
+                  "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                }
+                className="w-8 h-8 rounded-full border"
+              />
+
+              <button
+                onClick={handleLogout}
+                className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+
+          {/* ⭐ Updated Menu Button */}
           <button
-            className="px-3 py-2 border rounded"
+            className="px-3 py-2 border rounded bg-black text-white font-bold"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             Menu
@@ -138,7 +157,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ⭐ Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow-md border-t flex flex-col p-4 gap-2">
           {links.map((link) => (
@@ -158,16 +177,13 @@ export default function Navbar() {
           <div className="flex gap-2 mt-2 items-center">
             {user ? (
               <>
-                <div className="relative group flex flex-col items-center">
-                  <img
-                    src={
-                      user.photoURL ||
-                      "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                    }
-                    alt="User Avatar"
-                    className="w-8 h-8 rounded-full object-cover border border-gray-300"
-                  />
-                </div>
+                <img
+                  src={
+                    user.photoURL ||
+                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  }
+                  className="w-8 h-8 rounded-full border"
+                />
 
                 <button
                   onClick={handleLogout}
@@ -178,17 +194,12 @@ export default function Navbar() {
               </>
             ) : (
               <>
+                {/* ⭐ REGISTER Hidden in Mobile */}
                 <Link
                   href="/login"
                   className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
                   Login
-                </Link>
-                <Link
-                  href="/register"
-                  className="flex-1 px-4 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-100"
-                >
-                  Register
                 </Link>
               </>
             )}
