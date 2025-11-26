@@ -63,7 +63,9 @@ export default function MyImports() {
 
   if (!user) {
     return (
-      <p className="text-center mt-10">Please login to see your imports.</p>
+      <p className="text-center mt-10 text-purple-600">
+        Please login to see your imports.
+      </p>
     );
   }
 
@@ -78,8 +80,8 @@ export default function MyImports() {
       {/* Scrollable Table for All Screens */}
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="min-w-full bg-white">
-          <thead className="text-white">
-            <tr className="bg-gradient-to-r from-purple-600 to-pink-600">
+          <thead>
+            <tr className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
               <th className="px-4 py-2 text-left">Image</th>
               <th className="px-4 py-2 text-left">Title</th>
               <th className="px-4 py-2 text-left">Category</th>
@@ -101,25 +103,25 @@ export default function MyImports() {
                     className="w-16 h-16 object-cover rounded"
                   />
                 </td>
-                <td className="px-4 py-2">{item.title}</td>
-                <td className="px-4 py-2">{item.category}</td>
-                <td className="px-4 py-2">${item.price}</td>
-                <td className="px-4 py-2">{item.priority}</td>
-                <td className="px-4 py-2">{item.stock}</td>
-                <td className="px-4 py-2">
+                <td className="px-4 py-2 text-purple-600">{item.title}</td>
+                <td className="px-4 py-2 text-purple-600">{item.category}</td>
+                <td className="px-4 py-2 text-purple-600">${item.price}</td>
+                <td className="px-4 py-2 text-purple-600">{item.priority}</td>
+                <td className="px-4 py-2 text-purple-600">{item.stock}</td>
+                <td className="px-4 py-2 text-purple-600">
                   {new Date(item.date).toLocaleDateString()}
                 </td>
-                <td className="px-4 py-2 flex gap-2 ">
+                <td className="px-4 py-2 flex gap-2">
                   <Link
                     href={`/productsDetails/${item.productId}`}
-                    className="flex items-center gap-1 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded hover:from-pink-600 hover:to-purple-600"
                   >
                     <FaInfoCircle /> Details
                   </Link>
 
                   <button
                     onClick={() => handleDelete(item._id)}
-                    className="flex items-center gap-1 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                    className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded hover:from-pink-600 hover:to-purple-600"
                   >
                     <FaTrash /> Delete
                   </button>

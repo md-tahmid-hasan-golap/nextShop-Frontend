@@ -22,10 +22,8 @@ export default function Register1Page() {
       const userCredential = await createUser(email, password);
       const user = userCredential.user;
 
-      // ✅ Modular SDK: update displayName & photo
       await updateProfile(user, { displayName: name, photoURL: photoURL });
 
-      // ✅ SweetAlert2 success
       await Swal.fire({
         title: "Registered Successfully!",
         text: `Welcome, ${name}`,
@@ -33,7 +31,7 @@ export default function Register1Page() {
         confirmButtonText: "Go to Home",
       });
 
-      router.push("/"); // Redirect to Home
+      router.push("/");
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -56,7 +54,7 @@ export default function Register1Page() {
         confirmButtonText: "Go to Home",
       });
 
-      router.push("/"); // Redirect to Home
+      router.push("/");
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -68,10 +66,10 @@ export default function Register1Page() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  p-4 sm:p-6">
+    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6">
       <div className="bg-white shadow-xl p-6 sm:p-8 rounded-2xl w-full max-w-md sm:max-w-lg lg:max-w-xl">
         <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center mb-6 
+          className="text-2xl sm:text-3xl font-extrabold text-center mb-6
                bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
         >
           Register
@@ -79,43 +77,59 @@ export default function Register1Page() {
 
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="font-medium block mb-1">Name</label>
+            <label className="font-medium block mb-1 text-purple-600">
+              Name
+            </label>
             <input
               type="text"
               name="name"
-              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
+                         focus:outline-none focus:ring-2 focus:ring-purple-500
+                         text-purple-600 placeholder-purple-400"
               placeholder="Your Name"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium block mb-1">Photo URL</label>
+            <label className="font-medium block mb-1 text-purple-600">
+              Photo URL
+            </label>
             <input
               type="text"
               name="photoURL"
-              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
+                         focus:outline-none focus:ring-2 focus:ring-purple-500
+                         text-purple-600 placeholder-purple-400"
               placeholder="https://example.com/photo.jpg"
             />
           </div>
 
           <div>
-            <label className="font-medium block mb-1">Email</label>
+            <label className="font-medium block mb-1 text-purple-600">
+              Email
+            </label>
             <input
               type="email"
               name="email"
-              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
+                         focus:outline-none focus:ring-2 focus:ring-purple-500
+                         text-purple-600 placeholder-purple-400"
               placeholder="your@email.com"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium block mb-1">Password</label>
+            <label className="font-medium block mb-1 text-purple-600">
+              Password
+            </label>
             <input
               type="password"
               name="password"
-              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
+                         focus:outline-none focus:ring-2 focus:ring-purple-500
+                         text-purple-600 placeholder-purple-400"
               placeholder="********"
               required
             />
@@ -124,8 +138,8 @@ export default function Register1Page() {
           <button
             type="submit"
             className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
-             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
-             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
+                       hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+                       after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
           >
             Register
           </button>
@@ -133,7 +147,9 @@ export default function Register1Page() {
 
         <button
           onClick={handleGoogleLogin}
-          className="mt-4 w-full border py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition shadow-sm"
+          className="w-full relative overflow-hidden mt-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
+             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
         >
           Sign in with Google
         </button>
