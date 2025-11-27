@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AuthContext } from "@/components/AuthContext";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc"; // <-- Google Icon
 
 export default function Register1Page() {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -84,8 +85,8 @@ export default function Register1Page() {
               type="text"
               name="name"
               className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
-                         focus:outline-none focus:ring-2 focus:ring-purple-500
-                         text-purple-600 placeholder-purple-400"
+                     focus:outline-none focus:ring-2 focus:ring-purple-500
+                     text-purple-600 placeholder-purple-400"
               placeholder="Your Name"
               required
             />
@@ -99,8 +100,8 @@ export default function Register1Page() {
               type="text"
               name="photoURL"
               className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
-                         focus:outline-none focus:ring-2 focus:ring-purple-500
-                         text-purple-600 placeholder-purple-400"
+                     focus:outline-none focus:ring-2 focus:ring-purple-500
+                     text-purple-600 placeholder-purple-400"
               placeholder="https://example.com/photo.jpg"
             />
           </div>
@@ -113,8 +114,8 @@ export default function Register1Page() {
               type="email"
               name="email"
               className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
-                         focus:outline-none focus:ring-2 focus:ring-purple-500
-                         text-purple-600 placeholder-purple-400"
+                     focus:outline-none focus:ring-2 focus:ring-purple-500
+                     text-purple-600 placeholder-purple-400"
               placeholder="your@email.com"
               required
             />
@@ -128,8 +129,8 @@ export default function Register1Page() {
               type="password"
               name="password"
               className="w-full border px-3 py-2 sm:px-4 sm:py-2 rounded-lg
-                         focus:outline-none focus:ring-2 focus:ring-purple-500
-                         text-purple-600 placeholder-purple-400"
+                     focus:outline-none focus:ring-2 focus:ring-purple-500
+                     text-purple-600 placeholder-purple-400"
               placeholder="********"
               required
             />
@@ -138,19 +139,26 @@ export default function Register1Page() {
           <button
             type="submit"
             className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
-                       hover:from-pink-600 hover:to-purple-600 transition-all duration-300
-                       after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
+                   hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+                   after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full 
+                   after:bg-white after:opacity-10 after:transform after:rotate-12 
+                   after:transition-all after:duration-500 hover:after:left-[100%]"
           >
             Register
           </button>
         </form>
 
+        {/* Google Login Button With Icon */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full relative overflow-hidden mt-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
-             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
-             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
+          className="w-full flex items-center justify-center gap-2 relative overflow-hidden mt-3 
+          bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 
+          rounded-lg shadow-md hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+          after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full 
+          after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all 
+          after:duration-500 hover:after:left-[100%]"
         >
+          <FcGoogle className="text-xl" /> {/* GOOGLE ICON */}
           Sign in with Google
         </button>
 

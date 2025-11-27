@@ -4,6 +4,7 @@ import { AuthContext } from "@/components/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc"; // <-- Google Icon
 
 export default function LoginPage() {
   const { signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -34,7 +35,7 @@ export default function LoginPage() {
           icon: "success",
           confirmButtonText: "Go to Home",
         }).then(() => {
-          router.push("/"); // Redirect to Home
+          router.push("/");
         });
       })
       .catch((error) => {
@@ -57,7 +58,7 @@ export default function LoginPage() {
           icon: "success",
           confirmButtonText: "Go to Home",
         }).then(() => {
-          router.push("/"); // Redirect to Home
+          router.push("/");
         });
       })
       .catch((error) => {
@@ -116,13 +117,19 @@ export default function LoginPage() {
             Login
           </button>
 
+          {/* GOOGLE LOGIN BUTTON WITH ICON */}
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 sm:py-2.5 rounded-lg shadow-md
-             hover:from-pink-600 hover:to-purple-600 transition-all duration-300
-             after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:bg-white after:opacity-10 after:transform after:rotate-12 after:transition-all after:duration-500 hover:after:left-[100%]"
+            className="w-full flex items-center justify-center gap-2 relative overflow-hidden 
+            bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold 
+            py-2 sm:py-2.5 rounded-lg shadow-md
+            hover:from-pink-600 hover:to-purple-600 transition-all duration-300
+            after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full 
+            after:bg-white after:opacity-10 after:transform after:rotate-12 
+            after:transition-all after:duration-500 hover:after:left-[100%]"
           >
+            <FcGoogle className="text-xl" /> {/* GOOGLE ICON */}
             Sign in with Google
           </button>
         </form>
