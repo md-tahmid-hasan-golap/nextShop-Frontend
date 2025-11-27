@@ -6,6 +6,9 @@ import { useState, useContext } from "react";
 import { AuthContext } from "@/components/AuthContext";
 import Swal from "sweetalert2";
 
+// ✅ Icons
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -117,7 +120,7 @@ export default function Navbar() {
                 href="/login"
                 className="px-4 py-2 rounded-lg text-white text-sm font-semibold 
                   bg-gradient-to-r from-purple-500 to-pink-500 
-                  shadow hover:opacity-90 transition w-full sm:w-auto"
+                  shadow hover:opacity-90 transition"
               >
                 Login
               </Link>
@@ -155,17 +158,22 @@ export default function Navbar() {
               href="/login"
               className="px-4 py-2 rounded-lg text-white text-sm font-semibold 
                 bg-gradient-to-r from-purple-500 to-pink-500 
-                shadow hover:opacity-90 transition w-full sm:w-auto"
+                shadow hover:opacity-90 transition"
             >
               Login
             </Link>
           )}
 
+          {/* ✅ Mobile Menu Icon Button */}
           <button
-            className="px-3 py-2 border rounded bg-black text-white font-bold"
             onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2 rounded bg-black text-white"
           >
-            Menu
+            {menuOpen ? (
+              <XMarkIcon className="w-6 h-6" />
+            ) : (
+              <Bars3Icon className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
