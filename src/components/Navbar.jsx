@@ -56,6 +56,7 @@ export default function Navbar() {
       });
   };
 
+  // ✅ Updated underline thickness (h-[2px])
   const renderLink = (link) => {
     const isActive = pathname === link.href;
     return (
@@ -67,7 +68,7 @@ export default function Navbar() {
           relative
           ${
             isActive
-              ? "after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-purple-600 after:rounded"
+              ? "after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-purple-600 after:rounded"
               : ""
           }
           hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600
@@ -164,7 +165,7 @@ export default function Navbar() {
             </Link>
           )}
 
-          {/* ✅ Mobile Menu Icon Button — Updated to Purple Gradient */}
+          {/* Mobile Menu Icon */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded text-white 
