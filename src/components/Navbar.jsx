@@ -6,7 +6,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "@/components/AuthContext";
 import Swal from "sweetalert2";
 
-// ✅ Icons
+// Icons
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function Navbar() {
@@ -164,10 +164,12 @@ export default function Navbar() {
             </Link>
           )}
 
-          {/* ✅ Mobile Menu Icon Button */}
+          {/* ✅ Mobile Menu Icon Button — Updated to Purple Gradient */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 rounded bg-black text-white"
+            className="p-2 rounded text-white 
+              bg-gradient-to-r from-purple-500 to-pink-500
+              shadow hover:opacity-90 transition"
           >
             {menuOpen ? (
               <XMarkIcon className="w-6 h-6" />
